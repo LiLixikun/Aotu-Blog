@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development gulp",
     "build": "cross-env NODE_ENV=production gulp",
-    "start": "cd dist && nodemon app.js"
+    "start": "cross-env NODE_ENV=development nodemon ./dist/app.js",
+    "pm2": "node dist/app"
   },
   "keywords": [],
   "author": "",
@@ -18,7 +19,9 @@
     "koa-bodyparser": "^4.3.0",
     "koa-router": "^9.4.0",
     "koa-static": "^5.0.0",
-    "require-directory": "^2.1.1"
+    "mysql2": "^2.1.0",
+    "require-directory": "^2.1.1",
+    "sequelize": "^6.3.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
