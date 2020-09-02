@@ -1,7 +1,14 @@
-import Test from '../model/test'
 import { Op } from 'sequelize'
+import Test from '../model/test'
+import sequelize from '../core/db'
 
 class TagService {
+
+    // 自定义使用原生sql
+    async customQuery() {
+        const data = await sequelize.query("select * from `t_tag` ORDER BY click_count DESC limit 10", { type: sequelize.QueryTypes.SELECT })
+
+    }
 
     async getData() {
         const data = await Test.findAll()

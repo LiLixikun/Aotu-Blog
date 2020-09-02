@@ -89,5 +89,8 @@ Tag.init(
 
 export default Tag
 
-// 详情可查看
+// 属性定义详情可查看
 // https://github.com/demopark/sequelize-docs-Zh-CN/blob/master/core-concepts/model-basics.md
+
+// 验证可查看
+// https://github.com/demopark/sequelize-docs-Zh-CN/blob/master/core-concepts/validations-and-constraints.md

@@ -94,7 +94,9 @@ Tag.init({
   // 自动设置字段为蛇型命名规则
   underscored: true
 });
-var _default = Tag; // 详情可查看
+var _default = Tag; // 属性定义详情可查看
 // https://github.com/demopark/sequelize-docs-Zh-CN/blob/master/core-concepts/model-basics.md
+// 验证可查看
+// https://github.com/demopark/sequelize-docs-Zh-CN/blob/master/core-concepts/validations-and-constraints.md
 
 exports.default = _default;
