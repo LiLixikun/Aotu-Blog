@@ -3,14 +3,15 @@ import { Success } from '../core/httpException'
 
 @route('/api/tag')
 class TagController {
-    constructor({ }) {
+    constructor({ tagService }) {
         this.tagService = tagService
     }
 
     @route('/list')
     @GET()
     async actionIndex(ctx) {
-        throw new Success('hello word', '加载成功')
+        const data = await this.tagService.getData()
+        throw new Success(data, '加载成功')
     }
 
     @route('/create')

@@ -11,7 +11,7 @@ var _httpException = require("../core/httpException.js");
  * @Author: 席坤 
  * @Date: 2020-08-31 10:27:08 
  * @Last Modified by: xikun
- * @Last Modified time: 2020-08-31 11:43:50
+ * @Last Modified time: 2020-09-01 18:25:10
  */
 const catchError = async (ctx, next) => {
   try {
@@ -23,7 +23,7 @@ const catchError = async (ctx, next) => {
   } catch (error) {
     const isHttpException = error instanceof _httpException.HttpException; // 开发环境下输出 异常 error
 
-    if (process.env.NODE_ENV === 'dev' && !isHttpException) {
+    if (process.env.NODE_ENV === 'development' && !isHttpException) {
       throw error;
     } //判断是否是已知错误
 
