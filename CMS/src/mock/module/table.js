@@ -1,12 +1,22 @@
 import { success } from '../utils/response'
 // import Mock from 'mockjs'
-/*************************第1页******************************/
-const getTableList = () => {
-  // const year = new Date().getFullYear()
-  // const month = new Date().getMonth() > 9 ? new Date().getMonth() : '0' + new Date().getMonth()
+// 获取tag内容
+const getTagList = () => {
   const result = {
+    success: true,
+    total: 1,
     data: [
-      {a: 1}
+      {
+        id: '03a0800090d711ea809b6da7797c5315',
+        tagName: 'HTML',
+        content: 'html5',
+        status: 1,
+        clickCount: 100,
+        createTime: '2020-05-08 10:52:54',
+        updateTime: '2020-05-08 10:52:54',
+        sort: 1,
+        img: 'src/img/1.png'
+      }
     ]
   } 
   return success(result)
@@ -15,5 +25,5 @@ const getTableList = () => {
 
 
 export {
-  getTableList
+  getTagList
 }

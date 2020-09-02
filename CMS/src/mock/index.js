@@ -1,6 +1,6 @@
 import Mock from 'mockjs'
 import { 
-    getTableList
+    getTagList
  } from './module/table'
 
 Mock.setup({
@@ -8,7 +8,7 @@ Mock.setup({
 })
 window.Mock = Mock
 // pagge1
-Mock.mock(/table\/list/,'post',getTableList)
+Mock.mock(/tag\/list/,'post',getTagList)
 
 
 export default Mock

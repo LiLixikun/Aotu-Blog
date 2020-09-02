@@ -1,6 +1,6 @@
 import request from '../utils/request'
 
-function getTableList(data) {
+function getTagList(data) {
     return request({
         url: 'table/list',
         method: 'post',
@@ -9,5 +9,5 @@ function getTableList(data) {
 }
 
 export {
-    getTableList
+    getTagList
 }

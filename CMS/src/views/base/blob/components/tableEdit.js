@@ -48,7 +48,7 @@ const EditableCell = ({
 };
 
 const EditableTable = () => {
-  console.log(Form.useForm());
+  // console.log(Form.useForm());
   const [form] = Form.useForm();
   const [data, setData] = useState(originData);
   const [editingKey, setEditingKey] = useState('');

@@ -1,23 +1,55 @@
 import React from 'react';
 import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
-import Admin from './admin';
 import App from './App';
 // page
+import Admin from './admin';
 import TagManage from './views/base/tag';
 import CategoryManage from './views/base/category';
 import BlobManage from './views/base/blob';
 import Home from './views/home';
 import Login from './views/login';
-
-// form组件
 import NoMatch from './views/noMatch';
+import { renderRoutes } from "react-router-config";
+const routes = [
+  {
+    component: Admin,
+    routes: [
+      {
+        path: "/base/tag",
+        component: TagManage
+      },
+      {
+        path: "/base/category",
+        component: CategoryManage
+      },
+      {
+        path: "/base/blob",
+        component: BlobManage
+      }
+    ]
+  },
+  {
+    component: Admin,
+    routes: [
+      {
+        path: "/home",
+        component: TagManage
+      }
+    ]
+  }
+]
+
+
+
 export default class Router extends React.Component {
   render() {
     return (
       <HashRouter>
         <App>
           <Switch>
-            <Route path="/login" component={Login}></Route>
+          {renderRoutes(routes)}
+          {console.log(renderRoutes(routes))}
+            {/* <Route path="/login" component={Login}></Route>
             <Route
               path="/base"
               render={() => (
@@ -43,7 +75,7 @@ export default class Router extends React.Component {
               )}
             ></Route>
 
-            <Redirect to="/home" />
+            <Redirect to="/home" /> */}
           </Switch>
         </App>
       </HashRouter>

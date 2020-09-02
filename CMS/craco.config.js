@@ -1,4 +1,8 @@
 const CracoLessPlugin = require('craco-less');
+const path = require('path')
+function resolve(dir) {
+  return path.join(__dirname, dir)
+}
 module.exports = {
     plugins: [
       {
@@ -12,6 +16,17 @@ module.exports = {
           },
         },
       },
-    ]
+    ],
+    webpack: {
+      alias: {
+        "@": resolve("src")
+      }
+    },
+    devServer: { 
+      port: 9001,
+      proxy: {
+
+      }
+    },
   }
 

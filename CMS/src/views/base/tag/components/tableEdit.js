@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import { Table, Input, InputNumber, Popconfirm, Form } from 'antd';
-
-const originData = [];
+import { getTagList } from '@/api/table'
+const list = [];
 for (let i = 0; i < 100; i++) {
-  originData.push({
+  list.push({
     key: i.toString(),
     name: `Edrward ${i}`,
     age: 32,
     address: `London Park no. ${i}`,
   });
 }
-// console.log(originData)
+
+const getData=()=> {
+  // getTagList
+}
 
 const EditableCell = ({
   editing,
@@ -48,9 +51,8 @@ const EditableCell = ({
 };
 
 const EditableTable = () => {
-  console.log(Form.useForm());
   const [form] = Form.useForm();
-  const [data, setData] = useState(originData);
+  const [data, setData] = useState(list);
   const [editingKey, setEditingKey] = useState('');
 
   const isEditing = (record) => record.key === editingKey;
