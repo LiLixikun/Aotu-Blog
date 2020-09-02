@@ -10,11 +10,25 @@
     "antd": "^4.6.2",
     "axios": "^0.20.0",
     "craco-less": "^1.17.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.13",
     "mockjs": "^1.1.0",
+    "prettier": "^2.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
   },
   "scripts": {
     "start": "craco start",
