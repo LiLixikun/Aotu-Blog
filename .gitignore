@@ -9,6 +9,8 @@
 /Server/logs
 /Server/dist
 
+/Client/dist
+
 # testing
 /coverage
 
