@@ -4,8 +4,10 @@ import { Menu } from 'antd';
 import { NavLink } from 'react-router-dom';
 import menuList from './../../config/menuConfig';
 import './index.less';
+import { connect } from 'react-redux'
+import { setMenuKey } from '@/redux/action'
 const { SubMenu } = Menu;
-export default class NavLeft extends React.Component {
+class NavLeft extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,8 +21,11 @@ export default class NavLeft extends React.Component {
     });
   }
   handleClick = (e) => {
-    console.log('click', e);
-  };
+    // console.log('click', e);
+    // const {dispatch} = this.props;
+    // dispatch(setMenuKey(111))
+    this.props.setMenuKey(222)
+    };
   renderMenu = (data) => {
     return (data || []).map((item) => {
       if (item.children && item.children.length > 0) {
@@ -42,6 +47,7 @@ export default class NavLeft extends React.Component {
       <div>
         <div className="left-header">
           <img src={'./logo192.png'}></img>
+
           <i>logo</i>
         </div>
         <Menu
@@ -57,3 +63,15 @@ export default class NavLeft extends React.Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    menuKey: state
+  }
+}
+
+const mapDispatchProps = {
+  setMenuKey
+}
+
+export default connect(mapStateToProps, mapDispatchProps)(NavLeft)

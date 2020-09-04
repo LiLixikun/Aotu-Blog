@@ -11,9 +11,15 @@ import Login from './views/login';
 import NoMatch from './views/noMatch';
 import { renderRoutes } from "react-router-config";
 const routes = [
+
   {
     component: Admin,
+    path: '/',
     routes: [
+      {
+        path: '/home',
+        component: Home
+      },
       {
         path: "/base/tag",
         component: TagManage
@@ -28,14 +34,10 @@ const routes = [
       }
     ]
   },
+  
   {
-    component: Admin,
-    routes: [
-      {
-        path: "/home",
-        component: TagManage
-      }
-    ]
+    component:Login,
+    path: '/login'
   }
 ]
 
@@ -46,10 +48,11 @@ export default class Router extends React.Component {
     return (
       <HashRouter>
         <App>
-          <Switch>
+        <Switch>
           {renderRoutes(routes)}
-          {console.log(renderRoutes(routes))}
-            {/* <Route path="/login" component={Login}></Route>
+        </Switch>
+          {/* <Switch>
+            <Route path="/login" component={Login}></Route>
             <Route
               path="/base"
               render={() => (
@@ -75,8 +78,8 @@ export default class Router extends React.Component {
               )}
             ></Route>
 
-            <Redirect to="/home" /> */}
-          </Switch>
+            <Redirect to="/home" />
+          </Switch> */}
         </App>
       </HashRouter>
     );

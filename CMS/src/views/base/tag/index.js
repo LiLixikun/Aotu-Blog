@@ -19,11 +19,11 @@ const layout = {
   }
   const Demo = () => {
     const onFinish = values => {
-      console.log('Success:', values);
+      // console.log('Success:', values);
     };
   
     const onFinishFailed = errorInfo => {
-      console.log('Failed:', errorInfo);
+      // console.log('Failed:', errorInfo);
     };
   
     return (
@@ -90,10 +90,10 @@ export default class  TagManage extends React.Component {
             query:'query'
         }
         getTagList(postData).then(({data})=> {
-            console.log(data)
+            // console.log(data)
         })  
 
-        console.log(process.env.REACT_APP_NOT_SECRET_CODE)
+        // console.log(process.env.REACT_APP_NOT_SECRET_CODE)
     }
     render() {
         return (

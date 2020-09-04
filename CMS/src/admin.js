@@ -11,6 +11,7 @@ export default class Admin extends React.Component {
 
   render() {
     const { routes } = this.props.route
+   
     return (
       <div className="container">
         <div className="nav-left">
@@ -22,7 +23,7 @@ export default class Admin extends React.Component {
           </div>
           <div className="content">
           {renderRoutes(routes)}
-            {console.log(this.props)}
+          
             </div>
           {/* <div className="footer">
                        
@@ -33,3 +34,4 @@ export default class Admin extends React.Component {
     );
   }
 }
+
