@@ -5,13 +5,22 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _sequelize = require("sequelize");
+
 var _test = _interopRequireDefault(require("../model/test"));
 
-var _sequelize = require("sequelize");
+var _db = _interopRequireDefault(require("../core/db"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 class TagService {
+  // 自定义使用原生sql
+  async customQuery() {
+    const data = await _db.default.query("select * from `t_tag` ORDER BY click_count DESC limit 10", {
+      type: _db.default.QueryTypes.SELECT
+    });
+  }
+
   async getData() {
     const data = await _test.default.findAll(); // 使用嵌套数组来重命名属性：
     // findAll({
