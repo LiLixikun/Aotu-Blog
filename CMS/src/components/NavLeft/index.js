@@ -12,31 +12,29 @@ class NavLeft extends React.Component {
     super(props);
     this.state = {
       menuList: [],
-      // defaultSelectedKeys: ['/home']
     };
   }
   componentDidMount() {
     this.setState({
-      menuList: menuList,
+      menuList: menuList
+    },()=> {
+      this.props.setMenuKey(this.props.location.pathname)
     });
   }
   handleClick = (e) => {
-    // console.log('click', e);
-    // const {dispatch} = this.props;
-    // dispatch(setMenuKey(111))
-    this.props.setMenuKey(222)
+    this.props.setMenuKey(e.key)
     };
   renderMenu = (data) => {
     return (data || []).map((item) => {
       if (item.children && item.children.length > 0) {
         return (
-          <SubMenu title={item.title} key={item.key}>
+          <SubMenu title={item.title} key={item.key} >
             {this.renderMenu(item.children)}
           </SubMenu>
         );
       }
       return (
-        <Menu.Item title={item.title} key={item.key}>
+        <Menu.Item title={item.title} key={item.key} >
           <NavLink to={item.key}>{item.title}</NavLink>
         </Menu.Item>
       );
@@ -47,7 +45,6 @@ class NavLeft extends React.Component {
       <div>
         <div className="left-header">
           <img src={'./logo192.png'}></img>
-
           <i>logo</i>
         </div>
         <Menu
@@ -55,9 +52,9 @@ class NavLeft extends React.Component {
           style={{ width: '100%' }}
           mode="inline"
           theme="dark"
-          // defaultSelectedKeys={this.state.defaultSelectedKeys}
-        >
-          {this.renderMenu(this.state.menuList)}
+          selectedKeys={[this.props.menuKey]}>
+
+            {this.renderMenu(this.state.menuList)}
         </Menu>
       </div>
     );
@@ -66,7 +63,7 @@ class NavLeft extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    menuKey: state
+    menuKey: state.menuKeyStatus.menuKey
   }
 }
 

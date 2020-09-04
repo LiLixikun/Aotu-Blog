@@ -11,11 +11,10 @@ export default class Admin extends React.Component {
 
   render() {
     const { routes } = this.props.route
-   
     return (
       <div className="container">
         <div className="nav-left">
-          <NavLeft></NavLeft>
+          <NavLeft {...this.props}></NavLeft>
         </div>
         <div className="main">
           <div className="header">

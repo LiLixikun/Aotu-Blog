@@ -1,20 +1,17 @@
 // 数据处理
-import {type} from './../action'
-export const initalState = { 
-    menuKey: ''
- }
-
- export default (state=initalState,action)=> {
-     console.log(action)
-    switch (action.type) {
-        case type.MENU_KEY:
-            return {
-                ...state,
-                menuKey: action.menuKey
-            }
-            break
-        default:
-            return state
-            break
+import { combineReducers } from 'redux'
+// import menuKeyStatus from './module/menuKey'
+const combineReducersObject = {}
+function importAll(r){
+    console.log(r)
+  r.keys().forEach(
+    (key) => {
+        combineReducersObject[r(key).default.name] = r(key).default
     }
- }
+  );
+}
+importAll(require.context('./module', false, /\.reducer\.js/));
+
+
+
+ export default combineReducers(combineReducersObject)  
