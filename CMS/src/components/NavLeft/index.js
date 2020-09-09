@@ -45,7 +45,7 @@ class NavLeft extends React.Component {
       <div>
         <div className="left-header">
           <img src={'./logo192.png'}></img>
-          <i>logo</i>
+          <span>React 后台管理系统</span>
         </div>
         <Menu
           onClick={this.handleClick}

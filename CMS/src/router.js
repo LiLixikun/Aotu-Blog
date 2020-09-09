@@ -1,6 +1,8 @@
 import React from 'react';
 import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
 import App from './App';
+
+
 // page
 import Admin from './admin';
 import TagManage from './views/base/tag';
@@ -9,9 +11,9 @@ import BlobManage from './views/base/blob';
 import Home from './views/home';
 import Login from './views/login';
 import NoMatch from './views/noMatch';
-import { renderRoutes } from "react-router-config";
+// import { renderRoutes } from "react-router-config";
+import renderRoutes  from '@/utils/renderRoutes'
 const routes = [
-
   {
     component: Admin,
     path: '/',
@@ -34,10 +36,13 @@ const routes = [
       }
     ]
   },
-  
   {
     component:Login,
     path: '/login'
+  },
+  {
+    path: '*',
+    component: NoMatch
   }
 ]
 

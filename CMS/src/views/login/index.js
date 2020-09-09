@@ -4,6 +4,10 @@ export default class Login extends React.Component {
     super(props);
   }
   render() {
-    return <div className="login-page page">login</div>;
+    return (
+    <div className="login-page page">
+      login
+      
+    </div>);
   }
 }

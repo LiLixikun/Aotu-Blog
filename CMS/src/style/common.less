@@ -2,6 +2,8 @@
 @minWidth: 200px;
 @maxWidth: 200px;
 @bj_color: #001529;
+@main_color: #ebf1f6;
+@header_color: #fff;
 *{
   padding: 0;
   margin: 0;
@@ -22,9 +24,9 @@
         max-width: @maxWidth;
     }
     .main{
+        background: @main_color;
         flex: 1;
         height: calc(100vh);
-        overflow: auto;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -34,10 +36,18 @@
           flex: 1;
           padding: 20px;
           width: 100%;
+          overflow: auto;
         }
         .header{
           height: 60px;
+          width: 100%;
+          background: @header_color;
         }
+        .bread {
+          height: 40px;
+          box-shadow: 5px 0 0 0 red;
+        }
+
       //   .footer{
       //     height: 80px;
       //     line-height: 100px;

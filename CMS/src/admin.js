@@ -20,6 +20,8 @@ export default class Admin extends React.Component {
           <div className="header">
             <Header></Header>
           </div>
+          <div className="bread">
+          </div> 
           <div className="content">
           {renderRoutes(routes)}
           
