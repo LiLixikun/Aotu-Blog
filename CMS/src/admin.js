@@ -3,7 +3,9 @@ import './App.less';
 import Header from './components/Header';
 // import Footer from './components/Footer'
 import NavLeft from './components/NavLeft';
+import Bread from './components/Bread'
 import { renderRoutes } from 'react-router-config'
+
 export default class Admin extends React.Component {
   constructor(props) {
     super(props);
@@ -17,11 +19,9 @@ export default class Admin extends React.Component {
           <NavLeft {...this.props}></NavLeft>
         </div>
         <div className="main">
-          <div className="header">
             <Header></Header>
-          </div>
-          <div className="bread">
-          </div> 
+          <Bread {...this.props}></Bread>
+           
           <div className="content">
           {renderRoutes(routes)}
           

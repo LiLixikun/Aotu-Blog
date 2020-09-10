@@ -8,3 +8,5 @@ export function setMenuKey(menuKey){
         menuKey
     }
 }
+
+export { setGlobalConfig } from './global'

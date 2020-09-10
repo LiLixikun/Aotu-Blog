@@ -1,6 +1,8 @@
 import React from 'react';
+
 import './index.less';
 // import Utils from '../../utils/utils'
+import Language from './components/language'
 export default class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -8,8 +10,8 @@ export default class Header extends React.Component {
   }
   render() {
     return (
-      <div style={{ textAlign: 'center', lineHeight: '60px' }}>
-        <h2>Hedaer</h2>
+      <div className="header">
+        <Language {...this.props} />
       </div>
     );
   }

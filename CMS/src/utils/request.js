@@ -20,10 +20,6 @@ const service = axios.create({
 // 请求拦截
 service.interceptors.request.use(
   config => {
-    // const token = getToken()
-    // if (token) {
-    //   config.headers['Authorization'] = token
-    // }
     if (config.method === 'get') {
       config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
     } else {

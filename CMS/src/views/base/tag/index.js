@@ -3,7 +3,7 @@ import { getTagList } from '../../../api/table'
 import './../ui.less'
 import EditableTable from './components/tableEdit'
 import Search from './components/search'
-import { Form, Input, Button } from 'antd';
+// import { Form, Input, Button } from 'antd';
 
 export default class  TagManage extends React.Component {
     constructor(props) {
@@ -26,8 +26,7 @@ export default class  TagManage extends React.Component {
         return (
             <div >
                 <Search />
-               
-                <EditableTable />
+                <EditableTable  />
             </div>
         )
     }

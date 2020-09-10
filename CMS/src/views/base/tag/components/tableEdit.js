@@ -1,31 +1,41 @@
 import React, { useState } from 'react';
-import { Table, Input, InputNumber, Popconfirm, Form } from 'antd';
+import { Table, Input, InputNumber, Pagination, Form } from 'antd';
 import { getTagList } from '@/api/table'
-const list = [];
-for (let i = 0; i < 100; i++) {
-  list.push({
-    key: i.toString(),
-    name: `Edrward ${i}`,
-    age: 32,
-    address: `London Park no. ${i}`,
-  });
-}
-
+import guid from '@/utils/guid'
+const list = [
+  {
+    key: 1,
+    id: guid(),
+    tagName: 'HTML', 
+    content: 'html5', 
+    status: 1, 
+    clickCount: 100,
+    createTime: '2020-05-08 10:52:54',
+    updateTime: '2020-05-08 10:52:54'
+  },
+  {
+    key: 2,
+    id: guid(),
+    tagName: 'Node', 
+    content: 'node服务器', 
+    status: 0, 
+    clickCount: 110,
+    createTime: '2020-05-08 10:52:54',
+    updateTime: '2020-05-08 10:52:54',
+  }
+]
 const getData=()=> {
   // getTagList
 }
-
 const EditableCell = ({
   editing,
   dataIndex,
   title,
-  inputType,
   record,
   index,
   children,
   ...restProps
 }) => {
-  const inputNode = inputType === 'number' ? <InputNumber /> : <Input />;
   return (
     <td {...restProps}>
       {editing ? (
@@ -39,9 +49,8 @@ const EditableCell = ({
               required: true,
               message: `Please Input ${title}!`,
             },
-          ]}
-        >
-          {inputNode}
+          ]}>
+          <Input />
         </Form.Item>
       ) : (
         children
@@ -49,7 +58,6 @@ const EditableCell = ({
     </td>
   );
 };
-
 const EditableTable = () => {
   const [form] = Form.useForm();
   const [data, setData] = useState(list);
@@ -93,70 +101,102 @@ const EditableTable = () => {
 
   const columns = [
     {
-      title: '姓名',
-      dataIndex: 'name',
-      width: '25%',
+      title: '标签',
+      dataIndex: 'tagName',
+      width: 100,
       editable: true,
+      align: 'center'
     },
     {
-      title: '年龄',
-      dataIndex: 'age',
-      width: '15%',
+      title: '内容',
+      dataIndex: 'content',
+      width: 150,
       editable: true,
+      align: 'center'
     },
     {
-      title: '地址',
-      dataIndex: 'address',
-      width: '40%',
+      title: '状态',
+      dataIndex: 'status',
+      width: 80,
       editable: true,
+      align: 'center'
     },
     {
-      title: '操作',
-      dataIndex: 'operation',
-      render: (_, record) => {
-        const editable = isEditing(record);
-        return editable ? (
-          <span>
-            <a
-              href="javascript:;"
-              onClick={() => save(record.key)}
-              style={{
-                marginRight: 8,
-              }}
-            >
-              保存
-            </a>
-            <Popconfirm title="Sure to cancel?" onConfirm={cancel}>
-              <a>取消</a>
-            </Popconfirm>
-          </span>
-        ) : (
-          <a disabled={editingKey !== ''} onClick={() => edit(record)}>
-            编辑
-          </a>
-        );
-      },
+      title: '点击次数',
+      dataIndex: 'clickCount',
+      width: 80,
+      editable: true,
+      align: 'center'
     },
+    {
+      title: '创建时间',
+      dataIndex: 'createTime',
+      width: 120,
+      editable: true,
+      align: 'center'
+    },
+    {
+      title: '更新时间',
+      dataIndex: 'updateTime',
+      width: 120,
+      editable: true,
+      align: 'center'
+    },
+
+    // {
+    //   title: '操作',
+    //   dataIndex: 'operation',
+    //   render: (_, record) => {
+    //     const editable = isEditing(record);
+    //     return editable ? (
+    //       <span>
+    //         <a
+    //           href="javascript:;"
+    //           onClick={() => save(record.key)}
+    //           style={{
+    //             marginRight: 8,
+    //           }}
+    //         >
+    //           保存
+    //         </a>
+    //         <Popconfirm title="Sure to cancel?" onConfirm={cancel}>
+    //           <a>取消</a>
+    //         </Popconfirm>
+    //       </span>
+    //     ) : (
+    //       <a disabled={editingKey !== ''} onClick={() => edit(record)}>
+    //         编辑
+    //       </a>
+    //     );
+    //   },
+    // },
   ];
   const mergedColumns = columns.map((col) => {
     if (!col.editable) {
       return col;
     }
-
     return {
       ...col,
       onCell: (record) => ({
         record,
-        inputType: col.dataIndex === 'age' ? 'number' : 'text',
+        // inputType: col.dataIndex === 'age' ? 'number' : 'text',
         dataIndex: col.dataIndex,
         title: col.title,
         editing: isEditing(record),
       }),
     };
   });
+  const onChange = (page, pageSize)=> {
+    console.log(window.less)
+    console.log(page, pageSize)
+  }
+  const onShowSizeChange = (current, size)=> {
+    console.log(current, size)
+  }
   return (
     <Form form={form} component={false}>
       <Table
+        size="small"
         components={{
           body: {
             cell: EditableCell,
@@ -166,11 +206,17 @@ const EditableTable = () => {
         dataSource={data}
         columns={mergedColumns}
         rowClassName="editable-row"
-        pagination={{
-          onChange: cancel,
-          position: ['bottomLeft'],
-        }}
+        pagination={false}
       />
+      <Pagination 
+        total={85} 
+        // pageSize={20}
+        showSizeChanger 
+        showQuickJumper
+        showTotal={total => `共 ${total} 条`}
+        onChange={onChange}
+        onShowSizeChange={onShowSizeChange}
+       />
     </Form>
   );
 };
