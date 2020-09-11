@@ -1,8 +1,6 @@
 import React from 'react';
 import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
 import App from './App';
-
-
 // page
 import Admin from './admin';
 import TagManage from './views/base/tag';

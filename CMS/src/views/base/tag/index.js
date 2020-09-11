@@ -4,7 +4,6 @@ import './../ui.less'
 import EditableTable from './components/tableEdit'
 import Search from './components/search'
 // import { Form, Input, Button } from 'antd';
-
 export default class  TagManage extends React.Component {
     constructor(props) {
         super(props)

@@ -1,8 +1,8 @@
 @minWidth: 200px;
 @maxWidth: 200px;
-@bj_color: #001529;
-@main_color: #ebf1f6;
-@header_color: #fff;
+@bjColor: #001529;
+@mainColor: #ebf1f6;
+@headerColor: #fff;
 *{
   padding: 0;
   margin: 0;
@@ -16,13 +16,13 @@
     display: flex;
     width: 100%;
     .nav-left{
-        background-color: @bj_color;
+        background-color: @bjColor;
         height: 100vh;
         min-width: @minWidth;
         max-width: @maxWidth;
     }
     .main{
-        background: @main_color;
+        background: @mainColor;
         flex: 1;
         height: calc(100vh);
         display: flex;
@@ -38,7 +38,7 @@
           height: 60px;
           width: 100%;
           padding: 0 20px;
-          background: @header_color;
+          background: @headerColor;
           display: flex;
           align-items: center;
           flex-direction: row-reverse;

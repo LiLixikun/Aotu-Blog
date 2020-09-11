@@ -21,10 +21,11 @@
     "redux": "^4.0.5"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
-    "eject": "react-scripts eject"
+    "start": "node color && craco start",
+    "build": "node color && craco build",
+    "test": "node color && craco test",
+    "eject": "react-scripts eject",
+    "http-server": "cd build && http-server -c-l -p 8081"
   },
   "eslintConfig": {
     "extends": "react-app"
