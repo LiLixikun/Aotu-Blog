@@ -29,7 +29,7 @@ const sequelize = new Sequelize(dbname, username, password, {
 
 try {
     sequelize.authenticate();
-    console.log('数据库连接成功 😊');
+    console.log('数据库连接成功😊');
 } catch (error) {
     console.error('数据库链接失败 💩', error);
 }

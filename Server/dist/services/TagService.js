@@ -10,9 +10,18 @@ var _tag = _interopRequireDefault(require("../model/tag"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 class TagService {
-  async getData() {
-    const data = await _tag.default.findAll();
+  async getData(postData) {
+    // const data = await Tag.findAll()
+    const data = await _tag.default.findSearch(postData); // console.log(data)
+
     return data;
+  }
+
+  async create(data) {
+    await _tag.default.create({
+      'tagName': '1',
+      'uid': '132we23423453532453425'
+    });
   }
 
 }

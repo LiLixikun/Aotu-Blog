@@ -15,7 +15,7 @@ const database = {
   host,
   port: 3306,
   username: 'root',
-  password: 'root'
+  password: ''
 };
 exports.database = database;
 const security = {

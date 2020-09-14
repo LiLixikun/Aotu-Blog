@@ -11,7 +11,7 @@ const database = {
     host,
     port: 3306,
     username: 'root',
-    password: 'root'
+    password: ''
 }
 
 const security = {

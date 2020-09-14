@@ -5,10 +5,13 @@
  * @Last Modified time: 2020-09-01 22:42:24
  */
 
-import { Sequelize, Model, DataTypes } from 'sequelize'
+import { Sequelize, Model, DataTypes, Op } from 'sequelize'
 import sequelize from '../core/db'
 
 class Tag extends Model {
+    constructor() {
+        super()
+    }
     static async findHotTag() {
         const data = await sequelize.query("select * from `t_tag` ORDER BY click_count DESC limit 10", { type: sequelize.QueryTypes.SELECT })
         if (!!data) {
@@ -20,6 +23,22 @@ class Tag extends Model {
         const res = await Tag.findByPk(uid)
         return res
     }
+    //模糊查询tagName
+    static async findSearch(postData={}) {
+        const { page, pageSize, tagName: tagName = '' } = postData
+        const res = await Tag.findAndCountAll({
+            where: {
+                'tag_name' : {
+                    [Op.like]: `%${tagName}%`
+                }
+            },
+            offset: (page-1)*pageSize, // n位开始取值
+            limit: pageSize // 每次返回10条
+
+        })
+        return res
+    }
+    
 }
 
 Tag.init(

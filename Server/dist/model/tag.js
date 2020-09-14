@@ -18,6 +18,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @Last Modified time: 2020-09-01 22:42:24
  */
 class Tag extends _sequelize.Model {
+  constructor() {
+    super();
+  }
+
   static async findHotTag() {
     const data = await _db.default.query("select * from `t_tag` ORDER BY click_count DESC limit 10", {
       type: _db.default.QueryTypes.SELECT
@@ -30,6 +34,27 @@ class Tag extends _sequelize.Model {
 
   static async findByUid(uid) {
     const res = await Tag.findByPk(uid);
+    return res;
+  } //模糊查询tagName
+
+
+  static async findSearch(postData = {}) {
+    const {
+      page,
+      pageSize,
+      tagName = ''
+    } = postData;
+    const res = await Tag.findAndCountAll({
+      where: {
+        'tag_name': {
+          [_sequelize.Op.like]: `%${tagName}%`
+        }
+      },
+      offset: (page - 1) * pageSize,
+      // n位开始取值
+      limit: pageSize // 每次返回10条
+
+    });
     return res;
   }
 
