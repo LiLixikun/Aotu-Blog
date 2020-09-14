@@ -20,7 +20,8 @@ const serverConfig = {
                 use: ["babel-loader"],
             }
         ]
-    }
+    },
+
 }
 
 module.exports = merge(baseConfig, serverConfig)

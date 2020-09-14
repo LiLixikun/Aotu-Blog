@@ -1,5 +1,6 @@
 const path = require("path")
 const { merge } = require('webpack-merge');
+const LoadablePlugin = require('@loadable/webpack-plugin')
 const baseConfig = require('./webpack.base')
 
 const clientConfig = {
@@ -9,11 +10,14 @@ const clientConfig = {
         filename: 'bundles.js',
         path: path.join(__dirname, "../dist/public")
     },
-    module: {
-        rules: [
-
-        ]
-    }
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    },
+    plugins: [
+        new LoadablePlugin({ filename: 'stats.json', writeToDisk: true })
+    ]
 }
 
 module.exports = merge(baseConfig, clientConfig)
